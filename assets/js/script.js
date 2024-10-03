@@ -4,11 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const nav = document.querySelector(".nav-links");
   const body = document.body;
 
-  burger.addEventListener("click", () => {
-    nav.classList.toggle("active");
-    burger.classList.toggle("active");
-    body.classList.toggle("no-scroll");
-  });
+  if (burger && nav) {
+    burger.addEventListener("click", () => {
+      nav.classList.toggle("active");
+      burger.classList.toggle("active");
+      body.classList.toggle("no-scroll");
+    });
+  }
 
   /*============= Universal Tab Functionality =============*/
   const allTabWrappers = document.querySelectorAll(".services--tab-wrapper");
@@ -20,29 +22,91 @@ document.addEventListener("DOMContentLoaded", function () {
     tabItems.forEach((item, index) => {
       item.addEventListener("click", function () {
         tabItems.forEach((tab) => tab.classList.remove("active"));
-        tabContents.forEach((content) => {
-          content.classList.remove("active");
-          content.style.opacity = "0";
-          content.style.visibility = "hidden";
-        });
+        tabContents.forEach((content) => content.classList.add("hidden"));
 
         this.classList.add("active");
 
         const activeContent = tabContents[index];
-        activeContent.classList.add("active");
-        activeContent.style.visibility = "visible";
-        activeContent.style.opacity = "1";
-
-        setTimeout(() => {
-          activeContent.style.opacity = "1";
-        }, 10);
+        activeContent.classList.remove("hidden");
       });
     });
 
     // Initialize the first tab as active
     tabItems[0].classList.add("active");
-    tabContents[0].classList.add("active");
-    tabContents[0].style.visibility = "visible";
-    tabContents[0].style.opacity = "1";
+    tabContents[0].classList.remove("hidden");
   });
+
+  /*============= Slider =============*/
+  const totalSlides = 8;
+
+  const slidesContainer = document.querySelector(".slider--img");
+  slidesContainer.innerHTML = "";
+
+  for (let i = 1; i <= totalSlides; i++) {
+    const slideItem = document.createElement("div");
+    slideItem.classList.add("slider--item");
+    if (i === 1) slideItem.classList.add("active");
+
+    slideItem.innerHTML = `
+    <img src="assets/img/work-video-conference.png" alt="work-video-conference">
+  `;
+
+    slidesContainer.appendChild(slideItem);
+  }
+
+  const slides = document.querySelectorAll(".slider--item");
+  const prevBtn = document.querySelector(".prev-slide");
+  const nextBtn = document.querySelector(".next-slide");
+  const currentSlideElement = document.querySelector(".current-slide");
+  const totalSlidesElement = document.querySelector(".total-slides");
+  const dotsContainer = document.querySelector(".dots-container");
+
+  let currentSlide = 0;
+
+  totalSlidesElement.textContent = totalSlides;
+
+  function updateDots() {
+    dotsContainer.innerHTML = "";
+    for (let index = 0; index < totalSlides; index++) {
+      const dot = document.createElement("span");
+      dot.classList.add("dot");
+      if (index === currentSlide) {
+        dot.classList.add("active");
+      }
+      dot.addEventListener("click", () => {
+        currentSlide = index;
+        updateSlider();
+      });
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function updateSlider() {
+    const offset = -currentSlide * 100;
+    slidesContainer.style.transform = `translateX(${offset}%)`;
+
+    slides.forEach((slide, index) => {
+      slide.classList.toggle("active", index === currentSlide);
+    });
+
+    currentSlideElement.textContent = currentSlide + 1;
+    updateDots();
+
+    const texts = document.querySelectorAll(".services--text");
+    texts.forEach((text, index) => {
+      text.classList.toggle("active", index === currentSlide);
+    });
+  }
+
+  prevBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlider();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlider();
+  });
+
+  updateSlider();
 });

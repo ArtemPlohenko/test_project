@@ -185,6 +185,10 @@ header .container {
   position: relative;
 }
 
+.step__space {
+  padding: 50px;
+}
+
 .step__bg-black {
   color: var(--white);
   background-color: var(--black-2);
@@ -400,6 +404,144 @@ header .container {
   margin-bottom: 40px;
 }
 
+/*============= Slider =============*/
+.slider-container {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.slider--img {
+  position: relative;
+  max-width: 420px;
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slider--item {
+  min-width: 100%;
+  border: 2px solid var(--dark);
+  background-color: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 62px 0 80px;
+}
+
+.slider--item img {
+  width: 80%;
+}
+
+.services--text {
+  position: absolute;
+
+  background: #f9fafc;
+  border: 1px solid #070707;
+  border-radius: 28px;
+  padding: 4px 15px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 120%;
+}
+
+.slider--item.active {
+  display: flex;
+}
+
+.slider-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--dark);
+  position: absolute;
+  width: 100%;
+  max-width: 370px;
+  margin: 0 auto;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.slider-controls button {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+.prev-slide {
+  left: 30%;
+}
+
+.next-slide {
+  right: 30%;
+}
+
+.dots-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot {
+  width: 10px;
+  height: 4px;
+  background-color: #ccc;
+  margin: 0 5px;
+  transition: width 0.3s, background-color 0.3s;
+  cursor: pointer;
+}
+
+.dot.active {
+  width: 20px;
+  background-color: #000;
+}
+
+.slider .services--tabcontainer {
+  transform: translate(121px, 52px);
+}
+
+.slider .services--tab {
+  padding-top: 360px;
+  padding-left: 7px;
+  justify-content: center;
+}
+
+.slider .services--item {
+  padding: 6px 16px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.services--text {
+  display: none;
+}
+
+.services--text.active {
+  display: block;
+}
+
+.services--tab-wrapper {
+  position: relative;
+}
+
+.slide--nav {
+  position: absolute;
+  max-width: 466px;
+  margin: 0 auto;
+  width: 100%;
+  top: 64%;
+  left: 40px;
+}
+
+.slide--text-group {
+  height: 30px;
+}
+
 /*=============  =============*/
 /*=============  =============*/
 /*=============  =============*/
@@ -440,6 +582,7 @@ header .container {
   }
 
   .step--row {
+    position: relative;
     flex-direction: column;
   }
 
