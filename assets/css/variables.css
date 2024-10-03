@@ -1,0 +1,16 @@
+/*============= Variables =============*/
+:root {
+  --white: #ffffff;
+  --color: #0a0a0a;
+  --black: #2c3036;
+  --dark: #000000;
+  --black-2: #070707;
+  --gray: #e2e6ee;
+  --gray-input: #c9c9c9;
+  --gray-1: #b2b2b2;
+  --gray-2: #686868;
+  --gray-3: #b5b5b5;
+  --yellow: #ffd400;
+
+  --transform-04: all 0.4s ease;
+}
