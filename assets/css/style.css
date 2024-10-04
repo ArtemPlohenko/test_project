@@ -1,6 +1,40 @@
 /*============= Fonts =============*/
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+@font-face {
+  font-family: "icomoon";
+  src: url("../fonts/icomoon.eot?e2f38r");
+  src: url("../fonts/icomoon.eot?e2f38r#iefix") format("embedded-opentype"),
+    url("../fonts/icomoon.ttf?e2f38r") format("truetype"), url("../fonts/icomoon.woff?e2f38r") format("woff"),
+    url("../fonts/icomoon.svg?e2f38r#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow_circle_left-1:before {
+  content: "\e901";
+}
+.icon-arrow-big:before {
+  content: "\e902";
+}
+
 /*============= Body =============*/
 * {
   font-family: "Jost", sans-serif;
@@ -99,6 +133,19 @@ h3 span {
   background-color: var(--white);
 }
 
+.btn.btn__bg-white img {
+  margin-left: 24px;
+  margin-right: 10px;
+}
+
+.btn.btn__bg-white span {
+  margin-left: 8px;
+}
+
+.btn.btn__bg-white span::before {
+  font-size: 20px;
+}
+
 .btn__bg-white:hover {
   background-color: var(--gray-1);
 }
@@ -106,6 +153,20 @@ h3 span {
 .btn.btn__bg-black {
   color: var(--white);
   background-color: var(--black-2);
+}
+
+.btn.btn__bg-black span {
+  background-color: var(--white);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+  margin-bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.btn.btn__bg-black span::before {
+  font-size: 20px;
 }
 
 .btn__bg-black:hover {
@@ -118,6 +179,17 @@ h3 span {
   line-height: 20px;
   padding: 0;
   background-color: transparent;
+}
+
+.btn__text span {
+  background-color: var(--dark);
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.btn__text span:before {
+  color: var(--white);
+  font-size: 16px;
 }
 
 .btn__border-w {

@@ -19,21 +19,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const tabItems = wrapper.querySelectorAll(".services--item");
     const tabContents = wrapper.querySelectorAll(".services--tabcontent");
 
-    tabItems.forEach((item, index) => {
+    tabItems.forEach((item) => {
       item.addEventListener("click", function () {
         tabItems.forEach((tab) => tab.classList.remove("active"));
-        tabContents.forEach((content) => content.classList.add("hidden"));
+        tabContents.forEach((content) => content.classList.remove("active"));
 
         this.classList.add("active");
-
-        const activeContent = tabContents[index];
-        activeContent.classList.remove("hidden");
+        const activeContent = wrapper.querySelector(`#${item.dataset.tab}`);
+        activeContent.classList.add("active");
       });
     });
 
-    // Initialize the first tab as active
     tabItems[0].classList.add("active");
-    tabContents[0].classList.remove("hidden");
+    tabContents[0].classList.add("active");
   });
 
   /*============= Slider =============*/
@@ -48,8 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (i === 1) slideItem.classList.add("active");
 
     slideItem.innerHTML = `
-    <img src="assets/img/work-video-conference.png" alt="work-video-conference">
-  `;
+      <img src="assets/img/work-video-conference.png" alt="work-video-conference">
+    `;
 
     slidesContainer.appendChild(slideItem);
   }
