@@ -252,6 +252,7 @@ header .container {
   font-size: 28px;
   line-height: 120%;
   margin-bottom: 40px;
+  color: var(--white);
 }
 
 .list li p {
